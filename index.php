@@ -7,6 +7,9 @@
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
 
+    <meta charset="utf-8" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 
     <script src="/js/jquery-1.6.2.js" type="text/javascript"></script>
@@ -15,13 +18,47 @@
 </head>
 <body>
 
-<p>Test</p>
+<?php
 
-<table id="t" class="d">
-    <tr>
-        <td class="c">Текст</td>
-    </tr>
-</table>
-    <script src="/js/script.js" type="text/javascript"></script>
+header('Content-type: text/html; charset=utf-8');
+
+$text = "Аргентина манит негра";
+
+$tmp = "";
+
+for ($i = 0; $i < strlen($text); $i++) {
+    if ($text[$i] != " ") {
+        $tmp .=  $text[$i];
+    }
+}
+
+$text =  mb_strtolower($tmp);
+
+$tmp = "";
+
+echo $text . "<br>";
+
+$n = strlen($text);
+
+
+
+for ($i = 0; $i < ($n / 2); $i++) {
+    echo $i . " - " . $text[$i] . " = " . $text[$n - $i - 1] . "<br>";
+//        $tmp .= $text[$i];
+//        echo $text[$i];
+}
+
+//$text = $tmp;
+
+    echo "<p>$text</p>";
+
+?>
+
+<!--<table id="t" class="d">-->
+<!--    <tr>-->
+<!--        <td class="c">Текст</td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--    <script src="/js/script.js" type="text/javascript"></script>-->
 </body>
 </html>
