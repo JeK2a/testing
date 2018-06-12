@@ -1,64 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-
-    <meta charset="utf-8" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-
-    <script src="/js/jquery-1.6.2.js" type="text/javascript"></script>
-
-    <title>Test</title>
-</head>
-<body>
-
 <?php
 
-header('Content-type: text/html; charset=utf-8');
+$to  = "<mail@example.com>, ";
+$to .= "mail2@example.com>";
 
-$text = "Аргентина манит негра";
+$subject = "Заголовок письма";
 
-$tmp = "";
+$message = ' <p>Текст письма</p> </br>
+     <b>1-ая строчка </b> </br><i>2-ая строчка </i> </br>';
 
-for ($i = 0; $i < strlen($text); $i++) {
-    if ($text[$i] != " ") {
-        $tmp .=  $text[$i];
-    }
-}
+$headers  = "Content-type: text/html; charset=windows-1251 \r\n";
+$headers .= "From: От кого письмо <from@example.com>\r\n";
+$headers .= "Reply-To: reply-to@example.com\r\n";
 
-$text =  mb_strtolower($tmp);
-
-$tmp = "";
-
-echo $text . "<br>";
-
-$n = strlen($text);
-
-
-
-for ($i = 0; $i < ($n / 2); $i++) {
-    echo $i . " - " . $text[$i] . " = " . $text[$n - $i - 1] . "<br>";
-//        $tmp .= $text[$i];
-//        echo $text[$i];
-}
-
-//$text = $tmp;
-
-    echo "<p>$text</p>";
-
+mail($to, $subject, $message, $headers);
 ?>
-
-<!--<table id="t" class="d">-->
-<!--    <tr>-->
-<!--        <td class="c">Текст</td>-->
-<!--    </tr>-->
-<!--</table>-->
-<!--    <script src="/js/script.js" type="text/javascript"></script>-->
-</body>
-</html>
